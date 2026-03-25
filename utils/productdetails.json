@@ -1,0 +1,23 @@
+[
+    {
+        "product1":{
+            "productname" : "Sony xperia z5",
+            "customername" : "Sruthi Abraham",
+            "country" : "India",
+            "city" : "Bangalore",
+            "card" : "1234567890123456",
+            "month" : "12",
+            "year" : "2025"}
+        },
+        {
+             "product2":{
+            "productname" : "Apple monitor 24",
+            "customername" : "Ayden Chris",
+            "country" : "India",
+            "city" : "Bangalore",
+            "card" : "1234567890123456",
+            "month" : "12",
+            "year" : "2025"
+        }
+    }
+  ]
