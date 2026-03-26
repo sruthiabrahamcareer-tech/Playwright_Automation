@@ -3,31 +3,27 @@
 const {expect} = require('@playwright/test');
 const {test} = require('../utils/fixtures');
 
-const data=require('../utils/productdetails.json');
-const {LoginPage} = require('../pages/LoginPage');
+const {addToCartPage} = require('../pages/AddToCart');
 
-   //Below Test is for adding the product to the cart 
+ /* ************** TEST 1: ******************************************************* */
+   // Below Test is for adding the product to the cart 
 
-    test('Selecting and adding product to cart',async({customtext,page})=>
+    test.only('Selecting and adding product to cart',async({customtext,page})=>
     {
         
-        await page.getByText('Iphone 6 32gb').click();
-         page.on('dialog', async (dialog) => { //informing the page that there is a dialog box and we have to handle it, so we are using page.on method for handling the dialog box
-         //  and we have to accept the dialog box for adding the product to the cart, so we are using dialog.accept() method for accepting the dialog box.
-         expect(dialog.message()).toBe('Product added.'); // we can also validate the message of the dialog box using expect method, so we are validating the message of the dialog box to be 'Product added.'
-         await dialog.accept();
-        });
-         await page.getByText('Add to cart').click();
+       const addtocartobj=new addToCartPage(page);
+       await addtocartobj.addToCart();
+         
        });
-
-// Below Test is for adding the product to the cart and then doing the purchase of that product, 
+/* ************** TEST 2: ******************************************************* */
+//Below Test is for adding the product to the cart and then doing the purchase of that product, 
 // so we are filling all the details in the place order form and then clicking on the purchase button
 //  and validating the purchase successful message.
 
    test('Add product under phone category and pass till purchase',async({customtext,page})=>
 {
-    const product1=data[0]["product1"];
-    await page.getByText('Phones').click();
+    
+    const product1 = data[0]["product1"];
     await page.getByText(product1.productname).first().click();
 
     // Handling the dialog box which is coming after clicking on the add to cart button, so we are using page.on method for handling the dialog box and we are validating the message of the dialog box to be 'Product added.' and then accepting the dialog box using dialog.accept() method.
@@ -53,7 +49,7 @@ const {LoginPage} = require('../pages/LoginPage');
     await page.getByRole('button', { name: 'OK' }).click();
    });
 
-test.only('Add product under monitors category and do till purchase',async({customtext,page})=>
+test('Add product under monitors category and do till purchase',async({customtext,page})=>
 {
     const product2=data[1]["product2"];
     await page.getByText('Monitors').click();

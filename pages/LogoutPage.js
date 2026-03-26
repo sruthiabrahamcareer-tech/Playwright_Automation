@@ -15,3 +15,4 @@ class LogoutPage
                 await expect(this.loginbtn).toBeVisible();
     }
 }
+module.exports=({LogoutPage});
