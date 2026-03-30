@@ -29,7 +29,7 @@ const data=require('../utils/productdetails.json');
     const productdetailsobj=new productDetailsPage(page);
     const cartpageobj=new CartPage(page);
     await productdetailsobj.getproduct(product1.productname,"Phones",page);
-    await cartpageobj.goToCart();
+    await cartpageobj.goToCart(product1);
   });
 
 /* ************** TEST 3: ******************************************************* */
