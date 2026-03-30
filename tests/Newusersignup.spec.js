@@ -6,7 +6,7 @@ test.beforeEach(async({page})=>{
 })
 
 
-test.only('User signup',async({page})=>
+test('User signup',async({page})=>
 {
     const newuserdata1=dataset[0]["new user1"];
     await page.locator('#signin2').click();
