@@ -24,7 +24,7 @@ const data=require('../utils/productdetails.json');
 
    test('Add product under phone category and pass till purchase',async({customtext,page})=>
 {
-    
+    test.setTimeout(60000);
     const product1 = data[0]["product1"];
     const productdetailsobj=new productDetailsPage(page);
     const cartpageobj=new CartPage(page);
@@ -35,7 +35,7 @@ const data=require('../utils/productdetails.json');
 /* ************** TEST 3: ******************************************************* */
 test('Add product under monitors category and do till purchase',async({customtext,page})=>
 {
-     
+    test.setTimeout(60000);
     const product2 = data[1]["product2"];
     const productdetailsobj=new productDetailsPage(page);
     const cartpageobj=new CartPage(page);

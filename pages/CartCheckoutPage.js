@@ -25,12 +25,15 @@ class CartPage {
   console.log('Place Order visible:', await this.placeorderBtn.isVisible());
   console.log('Place Order enabled:', await this.placeorderBtn.isEnabled());
     //await this.page.pause();
+  await this.placeorderBtn.waitFor({ state: 'visible' })
   await this.placeorderBtn.click()
+ 
   console.log('Clicked Place Order')
 }
 
   async fillOrderForm(cartproduct) {
 
+    await this.nameInput.waitFor({ state: 'visible' })
     await this.nameInput.fill(cartproduct.customername);
       //await this.page.pause();
     await this.countryInput.fill(cartproduct.country);
