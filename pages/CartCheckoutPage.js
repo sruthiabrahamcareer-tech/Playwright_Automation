@@ -24,7 +24,7 @@ class CartPage {
   console.log('Before click');
   console.log('Place Order visible:', await this.placeorderBtn.isVisible());
   console.log('Place Order enabled:', await this.placeorderBtn.isEnabled());
-    await this.page.pause();
+    //await this.page.pause();
   await this.placeorderBtn.click()
   console.log('Clicked Place Order')
 }
@@ -32,7 +32,7 @@ class CartPage {
   async fillOrderForm(cartproduct) {
 
     await this.nameInput.fill(cartproduct.customername);
-      await this.page.pause();
+      //await this.page.pause();
     await this.countryInput.fill(cartproduct.country);
     await this.cityInput.fill(cartproduct.city);
     await this.cardInput.fill(cartproduct.card);
@@ -53,7 +53,7 @@ class CartPage {
    // await expect(this.page).toHaveURL(/cart\.html/);
 
      await this.openOrderModal();
-    await this.page.pause();
+    //await this.page.pause();
     await this.fillOrderForm(cartproduct);
     await this.submitOrder();
   }
