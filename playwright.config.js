@@ -41,7 +41,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure', // to capture screenshot only when the test fails, it will save the screenshot in the test-results folder with the name of the test and the timestamp.
     video: 'retain-on-failure', // to capture video only when the test fails, it will save the video in the test-results folder with the name of the test and the timestamp.
-    headless: false,// to run the tests in headed mode, it will open the browser and run the tests in it. By default it is true, which means it will run the tests in headless mode, it will not open the browser and run the tests in the background.
+    headless: true,// to run the tests in headed mode, it will open the browser and run the tests in it. By default it is true, which means it will run the tests in headless mode, it will not open the browser and run the tests in the background.
     launchOptions: {
     slowMo: 3000
   
@@ -50,6 +50,12 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+// Test for API endpoints
+     {
+    name: 'api',
+    testMatch: /.*\.api\.spec\.js/
+  },
+
 
     //creates saved authentication state for the user, so that we can use it in the other tests, and we don't have to login again and again, and also it will save time in the test execution.
       {
