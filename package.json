@@ -1,9 +1,13 @@
 {
   "devDependencies": {
     "@playwright/test": "^1.58.2",
-    "@types/node": "^25.5.0"
+    "@types/node": "^25.5.0",
+    "allure-playwright": "^3.11.0",
+    "rimraf": "^6.1.3"
   },
-  "scripts": {},
+  "scripts": {
+    "test:allure": "rimraf allure-results allure-report && playwright test tests && allure generate allure-results --clean -o allure-report"
+  },
   "dependencies": {
     "@cucumber/cucumber": "^12.7.0"
   }

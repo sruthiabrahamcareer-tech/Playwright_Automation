@@ -5,6 +5,7 @@ test.beforeEach(async({page})=>{
     await page.goto('https://demoblaze.com/');
 })
 
+/* *********************   TEST 1   ******************* */
 
 test('User signup',async({page})=>
 {
@@ -16,6 +17,7 @@ test('User signup',async({page})=>
     
 });
 
+/* *********************   TEST 2   ******************* */
 
 test('Check Close button in the signup popup',async({page})=>
 {

@@ -14,6 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -23,11 +24,18 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: 
+   [
+    ['list'],
+    ['allure-playwright', {
+      resultsDir: 'allure-results'
+    }]
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: 'https://demoblaze.com',
+   
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -42,9 +50,46 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+
+    //creates saved authentication state for the user, so that we can use it in the other tests, and we don't have to login again and again, and also it will save time in the test execution.
+      {
+      name: 'setup',
+      testMatch: /.*\.setup\.js/
+    },
+
+     // Login + Signup tests
+    // NO saved authentication
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'unauthenticated',
+      testMatch: [
+        /Login\.spec\.js/,
+        /Newusersignup\.spec\.js/
+      ],
+
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: {
+          cookies: [],
+          origins: []
+        }
+      }
+    },
+
+    // Purchase + Logout tests
+    // Uses saved authentication
+    {
+      name: 'authenticated',
+      testMatch: [
+        /Purchase\.spec\.js/,
+        /Logout\.spec\.js/
+      ],
+    
+
+    //{      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] ,
+      storageState: 'auth/demoblaze-auth.json'},
+           dependencies: ['setup']
+
     },
 /*
    {

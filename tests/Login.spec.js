@@ -6,6 +6,8 @@ const {LoginPage} = require('../pages/LoginPage');
 test.beforeEach(async({page})=>{
     await page.goto('https://demoblaze.com/');
     })
+/* *********************   TEST 1   ******************* */
+
 test('ValidLogin',async({page})=> 
 {
     const user = dataset[2]["valid user"];
@@ -16,7 +18,9 @@ test('ValidLogin',async({page})=>
 
 });
 
-test('Login with invalid username',async({page})=> 
+/* *********************   TEST 2   ******************* */
+
+test('Login with invalid username and valid password',async({page})=> 
 {
     const user = dataset[3]["invalid username"];
     const loginpageobj=new LoginPage(page);
@@ -25,11 +29,11 @@ test('Login with invalid username',async({page})=>
     await dialog.accept();
     });
     await loginpageobj.login(user.username,user.password);
-
-
 });
 
-test('Login with invalid password',async({page})=> 
+/* *********************   TEST 3   ******************* */
+
+test('Login with valid username and invalid password',async({page})=> 
 {
 
     const user = dataset[4]["invalid password"];
@@ -41,6 +45,8 @@ test('Login with invalid password',async({page})=>
     await loginpageobj.login(user.username,user.password);
 
 });
+
+/* *********************   TEST 4   ******************* */
 
 test('Login with invalid credentials',async({page})=> 
 {
