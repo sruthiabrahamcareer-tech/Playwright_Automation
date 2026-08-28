@@ -1,5 +1,0 @@
-Product added to cart
-Before click
-Place Order visible: true
-Place Order enabled: true
-Clicked Place Order
