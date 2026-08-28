@@ -1,8 +1,6 @@
 # Playwright Automation Framework
 
 This project is a browser automation framework built with Playwright for testing the DemoBlaze web application. It covers key user flows such as login, signup, invalid login attempts, product selection, cart operations, purchase flow, and logout.
-![automation-framework-overview](https://github.com/user-attachments/assets/71ea1144-c98f-4a92-9b58-2f340e197f22)
-
 
 The framework follows the Page Object Model (POM) design pattern to keep tests clean, reusable, and maintainable. It also includes Cucumber BDD-style scenarios, JSON-based test data, authentication state reuse, Allure reporting, and Jenkins integration for CI/CD execution.
 
