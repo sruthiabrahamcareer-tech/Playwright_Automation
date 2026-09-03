@@ -18,12 +18,14 @@ class DemoBlazeApi {
   }
 
   async login(username, password) {
+  const encodedPassword = Buffer.from(password).toString('base64');
+
     const response = await this.request.post(
       `${this.baseUrl}/login`,
       {
         data: {
           username: username,
-          password: password
+          password: encodedPassword
         }
       }
     );
